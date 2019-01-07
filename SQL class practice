@@ -1,0 +1,16 @@
+Student(Sno,Sname,Sage,Ssex)
+Course(Cno,Cname,Tno)
+Score(Sno,Cno,score)
+Teacher(Tno,Tname)
+
+1. 新建數據表
+--先檢查是否有這些表格並刪除
+drop table if exist student;
+drop table if exist course;
+drop table if exist Score;
+drop table if exist Teacher;
+
+.
+.
+.
+.
