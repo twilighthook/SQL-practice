@@ -1,0 +1,91 @@
+Student(Sno,Sname,Sage,Ssex)
+Course(Cno,Cname,Tno)
+Score(Sno,Cno,score)
+Teacher(Tno,Tname)
+
+
+
+1. 新建數據表
+--先檢查是否有這些表格並刪除
+drop table if exist student;
+drop table if exist course;
+drop table if exist Score;
+drop table if exist Teacher;
+
+CREATE TABLE Student (
+//設定自動增加，必須設為主鍵
+Id integer AUTO_INCREMENT primary key, 
+Sno int, 
+Sname varchar(32), 
+Sage int, 
+Ssex varchar(8) 
+//InnoDB為MySQL的引擎之一，設置為utf8編碼
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+
+Tips:
+//insert 可以使用null，自動輸入index
+//insert value 和 insert select的差別，https://stackoverflow.com/questions/47224819/insert-into-select-vs-insert-into-values-select
+insert into student select null , 123 , 'me' , 23 , 'F'
+
+Tips:
+//改變table，將Id欄位去除
+alter table student drop column Id
+
+CREATE TABLE Course ( 
+Cno    INT, 
+Cname varchar(32), 
+Tno    INT 
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE Score ( 
+Sno    INT, 
+Cno   INT,
+score INT 
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE Teacher ( 
+Tno    INT, 
+Tname varchar(16) 
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+insert into Student select 1,'小白',18,'男' union all
+select 2,'小明',19,'女' union all
+select 3,'小黑',17,'男' union all
+select 4,'大熊',18,'女' union all
+select 5,'無雙',17,'男' union all
+select 6,'趙高',19,'女'
+
+insert into Teacher select 1,'李世石' union all
+select 2,'凱明' union all
+select 3,'楊豔' union all
+select 4,'徐磊';
+
+insert into Course select 1,'國文',1 union all
+select 2,'數學',2 union all
+select 3,'英語',3 union all
+select 4,'物理',4;
+
+insert into Score
+select 1,1,56 union all 
+select 1,2,78 union all 
+select 1,3,67 union all 
+select 1,4,58 union all 
+select 2,1,79 union all 
+select 2,2,81 union all 
+select 2,3,92 union all 
+select 2,4,68 union all 
+select 3,1,91 union all 
+select 3,2,47 union all 
+select 3,3,88 union all 
+select 3,4,56 union all 
+select 4,2,88 union all 
+select 4,3,90 union all 
+select 4,4,93 union all 
+select 5,1,46 union all 
+select 5,3,78 union all 
+select 5,4,53 union all 
+select 6,1,35 union all 
+select 6,2,68 union all 
+select 6,4,71;
