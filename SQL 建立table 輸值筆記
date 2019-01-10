@@ -55,7 +55,7 @@ select 2,'小明',19,'女' union all
 select 3,'小黑',17,'男' union all
 select 4,'大熊',18,'女' union all
 select 5,'無雙',17,'男' union all
-select 6,'趙高',19,'女'
+select 6,'趙高',19,'女';
 
 insert into Teacher select 1,'李世石' union all
 select 2,'凱明' union all
