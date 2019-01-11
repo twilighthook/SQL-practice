@@ -89,3 +89,13 @@ select 5,4,53 union all
 select 6,1,35 union all 
 select 6,2,68 union all 
 select 6,4,71;
+
+2.找課程1成績比課程2高的學生
+select student.Sname 
+from student ,
+(SELECT sc1.sno from
+(select Sno , score from score where Cno = 1) sc1 ,
+(select Sno , score from score where Cno = 2) sc2 where sc1.score > sc2.score and sc1.sno = sc2.sno) bigger 
+where student.sno = bigger.sno
+
+
