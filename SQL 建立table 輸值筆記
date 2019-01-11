@@ -98,4 +98,10 @@ from student ,
 (select Sno , score from score where Cno = 2) sc2 where sc1.score > sc2.score and sc1.sno = sc2.sno) bigger 
 where student.sno = bigger.sno
 
+3.算出各學生的總平均
+select student.Sname , ROUND(avgScore.score , 2) as avgScore
+from student , 
+(select sno , avg(score) as score from score group by sno) avgScore 
+where avgScore.sno = student.sno
 
+4.
