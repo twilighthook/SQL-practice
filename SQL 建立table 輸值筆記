@@ -104,4 +104,10 @@ from student ,
 (select sno , avg(score) as score from score group by sno) avgScore 
 where avgScore.sno = student.sno
 
-4.
+4.查詢姓李的老師的總數
+select count(DISTINCT Tname) from teacher where Tname like '李%'
+
+5.選出沒上過楊豔老師課的學生
+select Sname from student where Sno not in
+(select DISTINCT Sno from score where Cno in 
+(select course.Cno from course , teacher where course.Tno = teacher.Tno and teacher.Tname ='楊豔'))
