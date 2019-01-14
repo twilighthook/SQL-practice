@@ -111,3 +111,6 @@ select count(DISTINCT Tname) from teacher where Tname like '李%'
 select Sname from student where Sno not in
 (select DISTINCT Sno from score where Cno in 
 (select course.Cno from course , teacher where course.Tno = teacher.Tno and teacher.Tname ='楊豔'))
+
+6.選出平均成績第二高的學生
+SELECT Sno , round(AVG(score) , 2) as AVGscore FROM score GROUP by Sno order by AVG(score) desc limit 1 offset 1 
